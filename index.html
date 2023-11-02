@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Listagem de Tabelas</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-4">Listagem de Tabelas</h1>
+
+        <h2>Oracle</h2>
+        <h3>Modo 01: Oracle PL/SQL</h3>
+        <pre>
+            SELECT tablespace_name, table_name, status, last_analyzed FROM all_tables;
+        </pre>
+        <p>
+            Esta consulta pode retornar diversas outras informações e além de pesquisar em all_tables, você também pode pesquisar em dba_tables e user_tables. Para mais informações sobre estas views, consulte a documentação do Oracle: <a href="link-para-documentacao-all-tables">all_tables</a>, <a href="link-para-documentacao-dba-tables">dba_tables</a> e <a href="link-para-documentacao-user-tables">user_tables</a>.
+        </p>
+
+        <h3>Modo 02: PowerBuilder</h3>
+        <pre>
+            SELECT DISTINCT OWNER, OBJECT_NAME
+            FROM DBA_OBJECTS
+            WHERE OBJECT_TYPE = 'TABLE'
+            ORDER BY OBJECT_NAME;
+        </pre>
+        <p>
+            A consulta acima retorna o owner e o nome do objeto que, neste caso, está filtrado (cláusula WHERE) para retornar apenas tabelas.
+        </p>
+
+        <h2>MySQL</h2>
+        <h3>Transact-SQL</h3>
+        <pre>
+            SHOW TABLES;
+        </pre>
+
+        <h2>DB2</h2>
+        <h3>Transact-SQL</h3>
+        <pre>
+            LIST TABLES FOR SCHEMA &lt;nome do schema&gt;;
+        </pre>
+
+        <h2>PostgreSQL</h2>
+        <h3>PgSQL</h3>
+        <pre>
+            \dt
+        </pre>
+        <p>
+            O comando acima listará todas as tabelas para a base de dados atual.
+        </p>
+
+        <h2>SQL Server</h2>
+        <h3>Transact-SQL</h3>
+        <pre>
+            SELECT * FROM information_schema.tables;
+        </pre>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
